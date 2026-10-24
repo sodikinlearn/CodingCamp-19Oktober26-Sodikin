@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List Live Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Todo List Live Dashboard</h1>
+    <!-- Global error/status area for storage load/save failures (Requirements 5.6, 5.7) -->
+    <p id="app-error" class="app-error" role="alert" aria-live="assertive" hidden></p>
+  </header>
+
+  <main id="dashboard" class="dashboard">
+
+    <!-- ============================================================= -->
+    <!-- GreetingWidget: current time, date, and time-of-day greeting  -->
+    <!-- Requirements 1.1 - 1.6                                       -->
+    <!-- ============================================================= -->
+    <section id="greeting-widget" class="widget greeting-widget" aria-labelledby="greeting-heading">
+      <h2 id="greeting-heading">Greeting</h2>
+      <time id="greeting-time" class="greeting-time" aria-label="Current time">--:--:--</time>
+      <p id="greeting-date" class="greeting-date" aria-label="Current date"></p>
+      <p id="greeting-text" class="greeting-text" aria-live="polite"></p>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- FocusTimer: 25-minute countdown with start/stop/reset        -->
+    <!-- Requirements 2.1 - 2.7                                       -->
+    <!-- ============================================================= -->
+    <section id="focus-timer-widget" class="widget focus-timer-widget" aria-labelledby="timer-heading">
+      <h2 id="timer-heading">Focus Timer</h2>
+      <p id="timer-display" class="timer-display" aria-live="off" aria-label="Time remaining">25:00</p>
+      <div class="timer-controls">
+        <button type="button" id="timer-start" class="timer-btn">Start</button>
+        <button type="button" id="timer-stop" class="timer-btn">Stop</button>
+        <button type="button" id="timer-reset" class="timer-btn">Reset</button>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- TaskList: add, edit, complete toggle, delete tasks           -->
+    <!-- Requirements 3.1 - 3.7                                       -->
+    <!-- ============================================================= -->
+    <section id="task-list-widget" class="widget task-list-widget" aria-labelledby="task-heading">
+      <h2 id="task-heading">Tasks</h2>
+
+      <form id="task-add-form" class="task-add-form">
+        <label for="task-input" class="sr-only">New task</label>
+        <input
+          type="text"
+          id="task-input"
+          class="task-input"
+          name="task-input"
+          placeholder="Add a new task..."
+          maxlength="200"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="add-task-btn" class="add-task-btn">Add</button>
+      </form>
+
+      <!-- Error message display near the task input (Requirements 3.6, 3.7, 7.3) -->
+      <p id="task-error" class="task-error" role="alert" aria-live="assertive" hidden></p>
+
+      <!-- Task items (with edit, complete toggle, delete controls) are rendered here -->
+      <ul id="task-list" class="task-list" aria-label="Task list"></ul>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- QuickLinks: URL input, add button, link buttons              -->
+    <!-- Requirements 4.1 - 4.5                                       -->
+    <!-- ============================================================= -->
+    <section id="quick-links-widget" class="widget quick-links-widget" aria-labelledby="quick-links-heading">
+      <h2 id="quick-links-heading">Quick Links</h2>
+
+      <form id="quick-link-add-form" class="quick-link-add-form">
+        <label for="link-url-input" class="sr-only">Website URL</label>
+        <input
+          type="url"
+          id="link-url-input"
+          class="link-url-input"
+          name="link-url-input"
+          placeholder="https://example.com"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="add-link-btn" class="add-link-btn">Add Link</button>
+      </form>
+
+      <!-- Error message display near the quick-link input (Requirements 4.4, 4.5) -->
+      <p id="link-error" class="link-error" role="alert" aria-live="assertive" hidden></p>
+
+      <!-- Quick link buttons are rendered here (up to a maximum of 12) -->
+      <div id="quick-links-list" class="quick-links-list" aria-label="Quick links"></div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
